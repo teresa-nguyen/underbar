@@ -112,7 +112,15 @@ var _ = {};
   };
 
   // Return all elements of an array that pass a truth test.
+  // example: _.filter([1,2,3,4,5,6], (num) => num > 3) => [4,5,6]
   _.filter = function(collection, test) {
+    const result = [];
+    _.each(collection, (value, index, array) => {
+      if (test(value, index, array) === true) {
+        result.push(value);
+      }
+    })
+    return result;
   };
 
   // Return all elements of an array that don't pass a truth test.
