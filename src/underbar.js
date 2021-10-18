@@ -170,13 +170,16 @@ var _ = {};
    * as an example of this.
    */
 
-  // Takes an array of objects and returns and array of the values of
+  // Takes an array of objects and returns an array of the values of
   // a certain property in it. E.g. take an array of people and return
   // an array of just their ages
   _.pluck = function(collection, key) {
     // TIP: map is really handy when you want to transform an array of
     // values into a new array of values. _.pluck() is solved for you
     // as an example of this.
+    return _.map(collection, (obj) => {
+      return obj[key];
+    })
   };
 
   // Calls the method named by methodName on each value in the list.
