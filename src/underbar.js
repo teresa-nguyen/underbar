@@ -115,8 +115,8 @@ var _ = {};
   // example: _.filter([1,2,3,4,5,6], (num) => num > 3) => [4,5,6]
   _.filter = function(collection, test) {
     const result = [];
-    _.each(collection, (value, index, array) => {
-      if (test(value, index, array) === true) {
+    _.each(collection, (value) => {
+      if (test(value) === true) {
         result.push(value);
       }
     })
@@ -127,6 +127,16 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    // const result = [];
+    // _.each(collection, (value, index, array) => {
+    //   if (test(value, index, array) === false) {
+    //     result.push(value);
+    //   }
+    // })
+    // return result;
+    return _.filter(collection, (value) => {
+      return !test(value);
+    });
   };
 
   // Produce a duplicate-free version of the array.
