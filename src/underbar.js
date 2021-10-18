@@ -141,6 +141,13 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    const result = [];
+    _.each(array, (value) => {
+      if (result.includes(value) === false) {
+        result.push(value);
+      }
+    })
+    return result;
   };
 
 
