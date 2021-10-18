@@ -87,9 +87,28 @@ var _ = {};
 
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
+  // example: _.indexOf([11, 22, 33, 44, 33], 33) => 2
   _.indexOf = function(array, target){
     // Instead of using a standard `for` loop,
     // use the iteration helper `each`, which you will need to write.
+    // for (let i =0; i < array.length; i++) {
+    //   if (array[i] === target) {
+    //     return i;
+    //   }
+    // }
+
+    // return -1;
+
+    let foundIndex = -1;
+    _.each(array, (value, index, collection) => {
+      if (value === target) {
+        if (foundIndex === -1) {
+          foundIndex = index;
+        }
+      }
+    });
+
+    return foundIndex;
   };
 
   // Return all elements of an array that pass a truth test.
