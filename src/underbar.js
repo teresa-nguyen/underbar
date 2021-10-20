@@ -208,6 +208,15 @@ var _ = {};
   //     return total + number;
   //   }, 0); // should be 6
   _.reduce = function(collection, iterator, accumulator) {
+    let result = accumulator;
+    for (let i = 0; i < collection.length; i++) {
+      if (accumulator === undefined && i === 0) {
+        result = collection[i];
+      } else {
+       result = iterator(result, collection[i]);
+      }
+    }
+    return result;
   };
 
   // Determine if the array or object contains a given value (using `===`).
@@ -248,9 +257,23 @@ var _ = {};
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
+  // collection = [1,2,3,4]  
   _.some = function(collection, iterator) {
     // TIP: There's a very clever way to re-use every() here.
-  }
+    for (let i = 0; i < collection.length; i++) {
+      const value = collection[i];
+      if (iterator === undefined) {
+        if (value) {
+          return true;
+        }
+      } else {
+        if (iterator(value)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
 
 
   /**
